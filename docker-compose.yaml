@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./backend/
+    ports:
+      - 80:80
+    entrypoint: "uvicorn components.endpoints.endpoints:app --reload --host 0.0.0.0 --port 80"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+  db:
+    build: ./db/
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'chat'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
