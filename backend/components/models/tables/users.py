@@ -8,8 +8,8 @@ class Users(Base):
     
     id = Column(Integer, primary_key=True)
     username = Column(String)
-    first_name = Column(String)
-    last_name = Column(String)
+    first_name = Column("firstName", String)
+    last_name = Column("lastName", String)
     password = Column("pw", String)
     birthday = Column(DateTime)
     email = Column(String)
